@@ -1,14 +1,13 @@
-package main
+package findmyaadigoserver
 
 import (
+	// "database/sql"
 	"fmt"
 	"net/http"
-
 	"github.com/gorilla/websocket"
+	_ "github.com/mattn/go-sqlite3"
 )
 
-var upgrader = websocket.Upgrader{} // upgrades HTTP → WebSocket
-var clients = make(map[*websocket.Conn]bool)
 
 func handleConnections(w http.ResponseWriter, r *http.Request) {
 	// Upgrade connection to WebSocket
@@ -36,7 +35,4 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/ws", handleConnections)
-	fmt.Println("Server started on :8080")
-	http.ListenAndServe(":8080", nil)
 }
