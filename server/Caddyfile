@@ -1,0 +1,16 @@
+localhost
+
+encode gzip
+
+reverse_proxy localhost:8080 {
+    # Support WebSockets automatically
+    transport http {
+        versions h2c 1.1
+    }
+}
+
+log {
+    output file caddy.log
+}
+
+tls internal
