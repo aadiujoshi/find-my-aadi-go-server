@@ -1,0 +1,4 @@
+.env
+server.exe
+test-server.py
+test-db.go
